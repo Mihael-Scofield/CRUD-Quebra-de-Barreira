@@ -33,7 +33,7 @@ public class ViewSolicitacao extends JPanel {
 		setSize(new Dimension(1264, 681));
 		setLayout(null);
 		
-		JButton btnVoltar = new JButton("Voltar ao Início");
+		JButton btnVoltar = new JButton("Voltar ao Incio");
 		btnVoltar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -79,8 +79,8 @@ public class ViewSolicitacao extends JPanel {
 		scpAprovadas.setBounds(10, 92, 610, 422);
 		add(scpAprovadas);
 		
-		String[] materiasAprovadas = {"Calculo 1A / CMA211 / Disponível / 1, Obrigatória", "Algoritmos e Estrutura de Dados 1 / CI100 / Disponível / 1, Obrigatória"};
-		String[] materiasRejeitadas = {"Calculo 1A / CMA211 / Disponível / 1, Obrigatória", "Algoritmos e Estrutura de Dados 1 / CI100 / Disponível / 1, Obrigatória"};
+		String[] materiasAprovadas = {"Calculo 1A / CMA211 / Disponivel / 1, Obrigatria", "Algoritmos e Estrutura de Dados 1 / CI100 / Disponivel / 1, Obrigatria"};
+		String[] materiasRejeitadas = {"Calculo 1A / CMA211 / Disponivel / 1, Obrigatria", "Algoritmos e Estrutura de Dados 1 / CI100 / Disponivel / 1, Obrigatria"};
 		
 		JList lstAprovadas = new JList(materiasAprovadas);
 		lstAprovadas.setVisible(false);

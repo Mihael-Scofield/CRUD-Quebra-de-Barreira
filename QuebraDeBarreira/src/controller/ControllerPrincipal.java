@@ -1,13 +1,21 @@
 package controller;
 
+import dao.HistoricoDAO;
+import dao.DisciplinasDAO;
+
 public class ControllerPrincipal {
 	int historico;
 	int grade;
 	ControllerMaster controllerMaster;
+	DisciplinasDAO disciplinasDAO;
+	HistoricoDAO historicoDAO;
+
 	
 	public ControllerPrincipal() {
 		this.historico = 0;
 		this.grade = 0;
+		disciplinasDAO = new DisciplinasDAO();
+		historicoDAO = new HistoricoDAO();
 	}
 	
 	public int getHistorico() {
@@ -29,13 +37,19 @@ public class ControllerPrincipal {
 	
 	/* Responsavel por cuidar da importacao do historico */
 	public boolean importarHistorico() {  
-		this.historico = 1;
+		try {
+			historicoDAO.recuperarHistorico();
+			this.historico = 1;
+		} catch (Exception e) {	}
 		return verificaNevegaTelaSelecao();
 	}
 	
 	/* Funcao responsavel por cuidar da importacao da grade */
 	public boolean importarGrade() {
-		this.grade = 1;
+		try {
+			disciplinasDAO.recuperarDisciplinas();
+			this.grade = 1;
+		} catch (Exception e) {	}
 		return verificaNevegaTelaSelecao();
 	}
 	
