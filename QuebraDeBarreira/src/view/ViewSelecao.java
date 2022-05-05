@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 
 import controller.ControllerMaster;
 import controller.ControllerPrincipal;
+import controller.ControllerSelecao;
 
 import java.awt.Dimension;
 
@@ -28,6 +29,7 @@ import javax.swing.ListSelectionModel;
 public class ViewSelecao extends JPanel {
 
 	public ControllerPrincipal controllerPrincipal;
+	public ControllerSelecao controllerSelecao;
 	
 	/* 
 	public void carregaListaCursadas(DefaultListModel<String> model) {		
@@ -40,6 +42,7 @@ public class ViewSelecao extends JPanel {
 	 * Create the panel.
 	 */
 	public ViewSelecao(ControllerMaster controllerMaster) {
+		this.controllerSelecao = new ControllerSelecao(controllerMaster);
 		setBorder(UIManager.getBorder("List.focusCellHighlightBorder"));
 		this.controllerPrincipal = new ControllerPrincipal(controllerMaster);
 		setSize(new Dimension(1264, 681));
@@ -173,6 +176,7 @@ public class ViewSelecao extends JPanel {
 		lblNewLabel_3.setBounds(449, 180, 356, 14);
 		add(lblNewLabel_3);
 
+		controllerSelecao.Exporta();
 		
 		// DefaultListModel<String> model = new DefaultListModel<String>();
 		// carregaListaCursadas(model);

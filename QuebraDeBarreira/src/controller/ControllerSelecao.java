@@ -1,10 +1,14 @@
 package controller;
 
-import dao.DisciplinasDAO;
-import dao.HistoricoDAO;
-
 public class ControllerSelecao {
-    public ControllerSelecao (DisciplinasDAO disciplinasDAO, HistoricoDAO historicoDAO ) {
-        System.out.println(disciplinasDAO);
+    ControllerMaster controllerMaster;
+    
+    public ControllerSelecao (ControllerMaster controllerMaster) {
+        this.controllerMaster = controllerMaster;
     }
+
+    public void Exporta () {
+        System.out.println(controllerMaster.disciplinas.get(0));
+    }
+    
 }
