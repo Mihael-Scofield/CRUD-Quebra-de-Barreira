@@ -17,11 +17,11 @@ public class DisciplinasDAO {
         List<Disciplina> disciplinas = new ArrayList<Disciplina>();
 
         try{
-            BufferedReader br = new BufferedReader(new FileReader("dao/disciplinas.csv"));
+            BufferedReader br = new BufferedReader(new FileReader("src/dao/disciplinas.csv"));
             disciplinas.addAll(extrairDados(br));
         }
         catch(Exception e){
-            System.out.println("Erro ao recuperarDisciplinas: " + e.getMessage());
+            System.out.println("Erro ao recuperar Disciplinas: " + e.getMessage());
         }
 
         return disciplinas;
