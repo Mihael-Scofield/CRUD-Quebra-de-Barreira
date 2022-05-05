@@ -1,55 +1,32 @@
 package controller;
 
-import dao.HistoricoDAO;
-import dao.DisciplinasDAO;
-
 public class ControllerPrincipal {
 	int historico;
 	int grade;
 	ControllerMaster controllerMaster;
-	DisciplinasDAO disciplinasDAO;
-	HistoricoDAO historicoDAO;
-
 	
-	public ControllerPrincipal() {
+	public ControllerPrincipal(ControllerMaster controllerMaster) {
+		this.controllerMaster = controllerMaster;
 		this.historico = 0;
 		this.grade = 0;
-		disciplinasDAO = new DisciplinasDAO();
-		historicoDAO = new HistoricoDAO();
-	}
-	
-	public int getHistorico() {
-		return historico;
-	}
-	
-	public void setHistorico(int historico) {
-		this.historico = historico;
-	}
-	
-	public int getGrade() {
-		return grade;
-	}
-	
-	public void setGrade(int grade) {
-		this.grade = grade;
 	}
 	
 	
 	/* Responsavel por cuidar da importacao do historico */
 	public boolean importarHistorico() {  
 		try {
-			historicoDAO.recuperarHistorico();
+			controllerMaster.historicoDAO.recuperarHistorico();
 			this.historico = 1;
-		} catch (Exception e) {	}
+		} catch (Exception e) {System.out.println("Erro: " + e.getMessage());}
 		return verificaNevegaTelaSelecao();
 	}
 	
 	/* Funcao responsavel por cuidar da importacao da grade */
 	public boolean importarGrade() {
 		try {
-			disciplinasDAO.recuperarDisciplinas();
+			controllerMaster.disciplinasDAO.recuperarDisciplinas();
 			this.grade = 1;
-		} catch (Exception e) {	}
+		} catch (Exception e) {System.out.println("Erro: " + e.getMessage());}
 		return verificaNevegaTelaSelecao();
 	}
 	

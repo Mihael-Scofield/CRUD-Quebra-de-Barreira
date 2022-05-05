@@ -41,7 +41,7 @@ public class ViewSelecao extends JPanel {
 	 */
 	public ViewSelecao(ControllerMaster controllerMaster) {
 		setBorder(UIManager.getBorder("List.focusCellHighlightBorder"));
-		this.controllerPrincipal = new ControllerPrincipal();
+		this.controllerPrincipal = new ControllerPrincipal(controllerMaster);
 		setSize(new Dimension(1264, 681));
 		setLayout(null);
 		

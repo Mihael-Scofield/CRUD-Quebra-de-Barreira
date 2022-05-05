@@ -39,13 +39,7 @@ public class HistoricoDAO{
                     historico.add(registro);
                 }
                 cont++;
-            }
-            String teste = historico.get(0).getNomeDisciplina() +
-                    " / " + historico.get(0).getCodigoDisciplina(); // +
-                    // " / " historico.get(0).getNomeDisciplina() +
-                    // " / " historico.get(0).getNomeDisciplina() +
-                    // " / " historico.get(0).getNomeDisciplina();
-            System.out.println(teste);            
+            }           
         }
         catch(Exception e){
             System.out.println("Erro ao ler o arquivo: " + e);

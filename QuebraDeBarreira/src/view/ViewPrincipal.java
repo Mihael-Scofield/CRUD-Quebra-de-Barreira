@@ -26,7 +26,7 @@ public class ViewPrincipal extends JPanel {
 	 * Create the panel.
 	 */
 	public ViewPrincipal(ControllerMaster controllerMaster) {
-		this.controllerPrincipal = new ControllerPrincipal();
+		this.controllerPrincipal = new ControllerPrincipal(controllerMaster);
 		setSize(new Dimension(1264, 681));
 		setLayout(null);
 
