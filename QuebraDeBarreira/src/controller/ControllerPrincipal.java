@@ -5,37 +5,28 @@ public class ControllerPrincipal {
 	int grade;
 	ControllerMaster controllerMaster;
 	
-	public ControllerPrincipal() {
+	public ControllerPrincipal(ControllerMaster controllerMaster) {
+		this.controllerMaster = controllerMaster;
 		this.historico = 0;
 		this.grade = 0;
-	}
-	
-	public int getHistorico() {
-		return historico;
-	}
-	
-	public void setHistorico(int historico) {
-		this.historico = historico;
-	}
-	
-	public int getGrade() {
-		return grade;
-	}
-	
-	public void setGrade(int grade) {
-		this.grade = grade;
 	}
 	
 	
 	/* Responsavel por cuidar da importacao do historico */
 	public boolean importarHistorico() {  
-		this.historico = 1;
+		try {
+			controllerMaster.historicoDAO.recuperarHistorico();
+			this.historico = 1;
+		} catch (Exception e) {System.out.println("Erro: " + e.getMessage());}
 		return verificaNevegaTelaSelecao();
 	}
 	
 	/* Funcao responsavel por cuidar da importacao da grade */
 	public boolean importarGrade() {
-		this.grade = 1;
+		try {
+			controllerMaster.disciplinasDAO.recuperarDisciplinas();
+			this.grade = 1;
+		} catch (Exception e) {System.out.println("Erro: " + e.getMessage());}
 		return verificaNevegaTelaSelecao();
 	}
 	

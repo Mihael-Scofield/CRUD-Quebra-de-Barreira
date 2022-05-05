@@ -32,7 +32,7 @@ public class ViewSelecao extends JPanel {
 	/* 
 	public void carregaListaCursadas(DefaultListModel<String> model) {		
 		model.addElement("Calculo 1A");
-		model.addElement("Análise de Algoritmos");		
+		model.addElement("Analise de Algoritmos");		
 	}
 	*/
 	
@@ -41,7 +41,7 @@ public class ViewSelecao extends JPanel {
 	 */
 	public ViewSelecao(ControllerMaster controllerMaster) {
 		setBorder(UIManager.getBorder("List.focusCellHighlightBorder"));
-		this.controllerPrincipal = new ControllerPrincipal();
+		this.controllerPrincipal = new ControllerPrincipal(controllerMaster);
 		setSize(new Dimension(1264, 681));
 		setLayout(null);
 		
@@ -117,9 +117,9 @@ public class ViewSelecao extends JPanel {
 		lblPosBarreira.setBounds(854, 197, 400, 70);
 		add(lblPosBarreira);
 		
-		String[] materiasCursadas = {"Calculo 1A / CMA211 / Disponível / 1, Obrigatória", "Algoritmos e Estrutura de Dados 1 / CI100 / Disponível / 1, Obrigatória", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1"};
-		String[] materiasPreBarreira = {"Calculo 1A / CMA211 / Disponível / 1, Obrigatória", "Algoritmos e Estrutura de Dados 1 / CI100 / Disponível / 1, Obrigatória"};
-		String[] materiasPosBarreira = {"Calculo 1A / CMA211 / Disponível / 1, Obrigatória", "Algoritmos e Estrutura de Dados 1 / CI100 / Disponível / 1, Obrigatória"};
+		String[] materiasCursadas = {"Calculo 1A / CMA211 / Disponvel / 1, Obrigatria", "Algoritmos e Estrutura de Dados 1 / CI100 / Disponvel / 1, Obrigatria", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1"};
+		String[] materiasPreBarreira = {"Calculo 1A / CMA211 / Disponvel / 1, Obrigatria", "Algoritmos e Estrutura de Dados 1 / CI100 / Disponvel / 1, Obrigatria"};
+		String[] materiasPosBarreira = {"Calculo 1A / CMA211 / Disponvel / 1, Obrigatria", "Algoritmos e Estrutura de Dados 1 / CI100 / Disponvel / 1, Obrigatria"};
 		
 		JScrollPane scpCursadas = new JScrollPane();
 		scpCursadas.setDoubleBuffered(true);

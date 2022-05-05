@@ -1,0 +1,2 @@
+Main-class: view.ViewMaster
+Name: view/ViewMaster.class
