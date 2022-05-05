@@ -6,11 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Disciplina;
+import model.RegistroHistorico;
 
 public class DisciplinasDAO {
 
     public DisciplinasDAO(){}
 
+    //Recupera todas as disciplinas do historico
     public List<Disciplina> recuperarDisciplinas(){
         List<Disciplina> disciplinas = new ArrayList<Disciplina>();
 
@@ -25,6 +27,7 @@ public class DisciplinasDAO {
         return disciplinas;
     } 
 
+    //Lẽ o arquivo e coloca os dados em uma lista de disciplinas
     private List<Disciplina> extrairDados(BufferedReader br){
         List<Disciplina> list = new ArrayList<Disciplina>();
         String str;
@@ -65,24 +68,7 @@ public class DisciplinasDAO {
         return list;
     }
 
-    public void imprimirDisciplinas(){
-        List<Disciplina> disciplinas = recuperarDisciplinas();
-        for(Disciplina disciplina : disciplinas){
-            System.out.println("Código Curso: " + disciplina.getCodigoCurso());
-            System.out.println("Versão Curso: " + disciplina.getVersaoCurso());
-            System.out.println("Estrutura: " + disciplina.getEstrutura());
-            System.out.println("Código Disciplina: " + disciplina.getCodigoDisciplina());
-            System.out.println("Nome Unidade: " + disciplina.getNomeUnidade());
-            System.out.println("Nome Disciplina: " + disciplina.getNomeDisciplina());
-            System.out.println("Período Ideal: " + disciplina.getPeriodoIdeal());
-            System.out.println("Horas: " + disciplina.getHoras());
-            System.out.println("Tipo: " + disciplina.getTipo());
-            System.out.println("Carga Horária: "+ disciplina.getCargaHoraria());
-            System.out.println("Situação: " + disciplina.getSituacao());
-            System.out.println("");
-        }
-    }
-
+    //Disciplinas da barreira
     public List<Disciplina> recuperarDisciplinasBarreira(){
         List<Disciplina> disciplinas = recuperarDisciplinas();
         List<Disciplina> disciplinasBarreira = new ArrayList<Disciplina>();
@@ -93,5 +79,38 @@ public class DisciplinasDAO {
             }
         }
         return disciplinasBarreira;
+    }
+
+    //Disciplinas do curso que ainda não foram cursadas
+    public List<Disciplina> recuperarDisciplinasNaoCursadas(){
+        HistoricoDAO historicoDAO = new HistoricoDAO();
+        List<Disciplina> disciplinas = recuperarDisciplinas();
+        List<RegistroHistorico> disciplinasConcluidas = historicoDAO.recuperarDisciplinasAprovadas();
+        List<Disciplina> disciplinasNaoCursadas = new ArrayList<Disciplina>();
+
+        disciplinasNaoCursadas.addAll(disciplinas);
+
+        for(Disciplina disciplina: disciplinas){
+            for(RegistroHistorico aprovada: disciplinasConcluidas){ 
+                if(aprovada.getCodigoDisciplina().equals(disciplina.getCodigoDisciplina())){
+                    disciplinasNaoCursadas.remove(disciplina);
+                }
+            }
+        }
+        return disciplinasNaoCursadas;
+    }
+
+    //Disciplinas da barreira que não foram cursadas
+    public List<Disciplina> recuperarDisciplinasRestantesBarreira(){
+        List<Disciplina> disciplinasNaoCursadas = recuperarDisciplinasNaoCursadas();
+        List<Disciplina> disciplinasRestantesBarreira = new ArrayList<Disciplina>();
+
+        for(Disciplina disciplina: disciplinasNaoCursadas){
+            if(disciplina.getPeriodoIdeal() <= 3 && disciplina.getPeriodoIdeal() > 0){
+                disciplinasRestantesBarreira.add(disciplina);
+            }
+        }
+
+        return disciplinasRestantesBarreira;
     }
 }
