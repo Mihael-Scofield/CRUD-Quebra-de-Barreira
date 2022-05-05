@@ -39,7 +39,11 @@ public class HistoricoDAO{
                     historico.add(registro);
                 }
                 cont++;
+<<<<<<< Updated upstream
             }           
+=======
+            }
+>>>>>>> Stashed changes
         }
         catch(Exception e){
             System.out.println("Erro ao ler o arquivo: " + e);
@@ -48,7 +52,8 @@ public class HistoricoDAO{
         return historico;        
     }
 
-    public List<RegistroHistorico> recuperarRegistroDisciplinasAprovadas(){
+    //Todas as aprovadas
+    public List<RegistroHistorico> recuperarDisciplinasAprovadas(){ 
         HistoricoDAO historicoDAO = new HistoricoDAO();
         List<RegistroHistorico> historico = historicoDAO.recuperarHistorico();
         List<RegistroHistorico> disciplinasCursadas = new ArrayList<RegistroHistorico>();
@@ -61,7 +66,8 @@ public class HistoricoDAO{
         return disciplinasCursadas;
     } 
 
-    public List<RegistroHistorico> recuperarDisciplinasPeriodo(String ano, String periodo){
+    //Todas do periodo
+    public List<RegistroHistorico> recuperarDisciplinasPeriodo(String ano, String periodo){ 
         List<RegistroHistorico> historico = recuperarHistorico();
         List<RegistroHistorico> list = new ArrayList<RegistroHistorico>();
 
@@ -70,8 +76,19 @@ public class HistoricoDAO{
                 list.add(registro);
             }
         }
-
         return list;
     }
 
+    //Aprovadas do periodo
+    public List<RegistroHistorico> recuperarDisciplinasAprovadasPeriodo(String ano, String periodo){
+        List<RegistroHistorico> disciplinasPeriodo = recuperarDisciplinasPeriodo(ano, periodo);
+        List<RegistroHistorico> disciplinasAprovadasPeriodo = new ArrayList<RegistroHistorico>();
+
+        for(RegistroHistorico registro: disciplinasPeriodo){
+            if(registro.getSituacao().equals("Aprovado")){
+                disciplinasAprovadasPeriodo.add(registro);
+            }
+        }
+        return disciplinasAprovadasPeriodo;
+    }
 }
