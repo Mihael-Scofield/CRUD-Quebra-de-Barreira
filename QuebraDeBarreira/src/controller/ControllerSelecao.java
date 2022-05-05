@@ -1,5 +1,7 @@
 package controller;
 
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import model.Aluno;
@@ -62,33 +64,43 @@ public class ControllerSelecao {
     }
     
     public void geraCSV(int[] preBarreiraSelected, int[] posBarreiraSelected, ArrayList<String> materiasPreBarreira, ArrayList<String> materiasPosBarreira ) {
-    	// System.out.println ("COD_CURSO,NUM_VERSAO,DESCR_ESTRUTURA,COD_DISCIPLINA,NOME_UNIDADE,NOME_DISCIPLINA,PERIODO_IDEAL,NUM_HORAS,TIPO_DISCIPLINA,CH_TOTAL,SITUACAO_VERSAO");
-		// System.out.println (",,,,,,,,,,");
-		// System.out.println (materiasPreBarreira.get(0).toString());
-
-		for (int i = 0; i < posBarreiraSelected.length; i++) {
-			System.out.println (posBarreiraSelected[i]);
-		}
-	
-		int j = 0;
-		int flag_pre = 0;
-		int flag_pos = 0;
-		for(int i = 0; i < controllerMaster.disciplinas.size(); i++) {
-    		if (controllerMaster.disciplinas.get(i).getPeriodoIdeal() <= 3) {
-    			try {
-					if (preBarreiraSelected[flag_pre] == i) {
-						System.out.println(controllerMaster.disciplinas.get(i).getNomeDisciplina());
-						flag_pre++;
-					}
-				} catch (Exception e) {}
-    		}
-			try {
-				if (posBarreiraSelected[flag_pos] == j) {
-					System.out.println (controllerMaster.disciplinas.get(i).getNomeDisciplina());
+		
+		try {
+			FileWriter fileWriter = new FileWriter ("dao/solicitacao.csv");
+			PrintWriter printWriter = new PrintWriter (fileWriter);
+			
+			printWriter.println ("COD_CURSO,NUM_VERSAO,DESCR_ESTRUTURA,COD_DISCIPLINA,NOME_UNIDADE,NOME_DISCIPLINA,PERIODO_IDEAL,NUM_HORAS,TIPO_DISCIPLINA,CH_TOTAL,SITUACAO_VERSAO");
+			printWriter.println (",,,,,,,,,,");
+			
+			int flag_pre = 0;
+		
+			int flag_pre_s = 0;
+			int flag_pos = 0;
+			int flag_pos_s = 0;
+			for(int i = 0; i < controllerMaster.disciplinas.size(); i++) {
+				if (controllerMaster.disciplinas.get(i).getPeriodoIdeal() <= 3) {
+					try {
+						if (preBarreiraSelected[flag_pre_s] == flag_pre) {
+							printWriter.println(controllerMaster.disciplinas.get(i).getAll());
+							flag_pre_s++;
+						}
+					} catch (Exception e) {}
+					flag_pre++;
+				}
+				if (controllerMaster.disciplinas.get(i).getPeriodoIdeal() >= 4) {
+					try {
+						if (posBarreiraSelected[flag_pos_s] == flag_pos) {
+							printWriter.println(controllerMaster.disciplinas.get(i).getAll());
+							flag_pos_s++;
+						}
+					} catch (Exception e) {}
 					flag_pos++;
 				}
-			} catch (Exception e) {}
-			j++;
-    	}
+			}
+			
+			printWriter.close();
+		} catch (Exception e) {
+			System.out.println ("Erro" + e.getMessage());
+		}
     }
 }
