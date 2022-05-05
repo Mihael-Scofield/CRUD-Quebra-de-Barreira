@@ -14,7 +14,7 @@ public class HistoricoDAO{
     public List<RegistroHistorico> recuperarHistorico(){   
         List<RegistroHistorico> historico = new ArrayList<RegistroHistorico>();
 
-        try (BufferedReader br = new BufferedReader(new FileReader("src/dao/historico.csv"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("dao/historico.csv"))) {
             String str;
             int cont = 0;
             while ((str = br.readLine()) != null) {
