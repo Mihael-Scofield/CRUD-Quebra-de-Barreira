@@ -95,4 +95,18 @@ public class Disciplina {
     public void setHoras(int horas) {
         this.horas = horas;
     }    
+
+    public String getAll () {
+        return getCodigoCurso() + "," +
+               getVersaoCurso() + "," +
+               getEstrutura() + "," +
+               getCodigoDisciplina() + "," +
+               getNomeUnidade() + "," +
+               getNomeDisciplina() + "," +
+               getPeriodoIdeal() + "," +
+               getHoras() + "," +
+               getTipo() + "," +
+               getCargaHoraria() + "," +
+               getSituacao();
+    }
 }

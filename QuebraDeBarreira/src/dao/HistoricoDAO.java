@@ -39,11 +39,7 @@ public class HistoricoDAO{
                     historico.add(registro);
                 }
                 cont++;
-<<<<<<< Updated upstream
             }           
-=======
-            }
->>>>>>> Stashed changes
         }
         catch(Exception e){
             System.out.println("Erro ao ler o arquivo: " + e);
