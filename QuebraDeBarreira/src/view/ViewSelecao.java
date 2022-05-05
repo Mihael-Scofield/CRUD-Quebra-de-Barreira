@@ -49,6 +49,7 @@ public class ViewSelecao extends JPanel {
 		setSize(new Dimension(1264, 681));
 		setLayout(null);
 		
+
 		JButton btnVoltar = new JButton("Voltar\r\n");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -63,19 +64,9 @@ public class ViewSelecao extends JPanel {
 		add(btnVoltar);
 		
 		JLabel lblNewLabel = new JLabel("Informa\u00E7\u00F5es do Aluno: ");
-		lblNewLabel.setBounds(10, 24, 272, 25);
+		lblNewLabel.setBounds(25, 25, 272, 25);
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 21));
 		add(lblNewLabel);
-		
-		JLabel lblInformaesDoSemestre = new JLabel("Informa\u00E7\u00F5es do Semestre Passado: ");
-		lblInformaesDoSemestre.setBounds(10, 75, 390, 25);
-		lblInformaesDoSemestre.setFont(new Font("Arial", Font.BOLD, 22));
-		add(lblInformaesDoSemestre);
-		
-		JLabel lblMatriasRecomendadas = new JLabel("Mat\u00E9rias Recomendadas: ");
-		lblMatriasRecomendadas.setBounds(10, 125, 287, 25);
-		lblMatriasRecomendadas.setFont(new Font("Arial", Font.BOLD, 22));
-		add(lblMatriasRecomendadas);
 		
 		JLabel lblNewLabel_1 = new JLabel("\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014");
 		lblNewLabel_1.setBounds(0, 161, 1319, 25);
@@ -155,13 +146,11 @@ public class ViewSelecao extends JPanel {
 		lstPosBarreira.setBorder(UIManager.getBorder("List.focusCellHighlightBorder"));
 		lstPosBarreira.setBackground(new Color(231, 245, 220));
 		
-		JLabel lblNewLabel_2 = new JLabel("Podemos escrever aqui tamb\u00E9m");
-		lblNewLabel_2.setBounds(10, 53, 223, 14);
+		String informacoesAluno = controllerSelecao.pegarInformacoesAluno();
+		JLabel lblNewLabel_2 = new JLabel(informacoesAluno);
+		lblNewLabel_2.setFont(new Font("Arial", Font.BOLD, 18));
+		lblNewLabel_2.setBounds(25, 113, 728, 25);
 		add(lblNewLabel_2);
-		
-		JLabel lblNewLabel_2_1 = new JLabel("Podemos escrever aqui tamb\u00E9m");
-		lblNewLabel_2_1.setBounds(248, 32, 223, 14);
-		add(lblNewLabel_2_1);
 		
 		JLabel lblNewLabel_3 = new JLabel("Use o Ctrl ou o Shift para selecionar mais de um");
 		lblNewLabel_3.setFont(new Font("Arial", Font.BOLD, 14));

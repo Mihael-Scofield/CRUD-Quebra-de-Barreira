@@ -2,6 +2,8 @@ package controller;
 
 import java.util.ArrayList;
 
+import model.Aluno;
+
 public class ControllerSelecao {
     ControllerMaster controllerMaster;
     
@@ -51,6 +53,11 @@ public class ControllerSelecao {
     		}
     	}
     	return materiasPosBarreira;
+    }
+    
+    public String pegarInformacoesAluno() {
+    	Aluno aluno = controllerMaster.historico.get(0).getAluno();
+    	return aluno.getnome() + " - " + aluno.getGrr();
     }
     
     public void geraCSV(int[] preBarreiraSelected, int[] posBarreiraSelected, ArrayList<String> materiasPreBarreira, ArrayList<String> materiasPosBarreira ) {
