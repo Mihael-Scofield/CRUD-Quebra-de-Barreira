@@ -2,6 +2,8 @@ package model;
 
 import java.util.List;
 
+import control.Quebra;
+
 public class PedidoQuebra {
 
     List<Disciplina> disciplinas;
