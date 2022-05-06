@@ -10,7 +10,6 @@ import model.PedidoQuebra;
 import model.RegistroHistorico;
 
 public class Quebra {
-    
 
     public Quebra() {}
 
@@ -50,6 +49,7 @@ public class Quebra {
         return 0;
     }
 
+    //Analisa pedido de quebra  
     public List<List<Disciplina>> analisarPedido(PedidoQuebra pedido){
         HistoricoDAO historicoDAO = new HistoricoDAO();
         
