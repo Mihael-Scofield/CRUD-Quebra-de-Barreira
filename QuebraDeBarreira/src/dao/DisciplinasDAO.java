@@ -21,7 +21,7 @@ public class DisciplinasDAO {
             disciplinas.addAll(extrairDados(br));
         }
         catch(Exception e){
-            System.out.println("Erro ao recuperarDisciplinas: " + e.getMessage());
+            System.out.println("Erro ao recuperar Disciplinas: " + e.getMessage());
         }
 
         return disciplinas;

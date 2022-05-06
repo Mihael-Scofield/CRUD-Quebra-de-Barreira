@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.DefaultListModel;
 import javax.swing.UIManager;
@@ -48,18 +49,7 @@ public class ViewSelecao extends JPanel {
 		setSize(new Dimension(1264, 681));
 		setLayout(null);
 		
-		JButton btnGerarcsv = new JButton("Gerar .csv e Solicitar");
-		btnGerarcsv.setBounds(1067, 8, 185, 65);
-		btnGerarcsv.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				controllerMaster.navegaTelaSolicitacao();
-			}
-		});
-		btnGerarcsv.setFont(new Font("Arial", Font.BOLD, 15));
-		btnGerarcsv.setBorderPainted(false);
-		btnGerarcsv.setBackground(new Color(243, 215, 245));
-		add(btnGerarcsv);
-		
+
 		JButton btnVoltar = new JButton("Voltar\r\n");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -74,19 +64,9 @@ public class ViewSelecao extends JPanel {
 		add(btnVoltar);
 		
 		JLabel lblNewLabel = new JLabel("Informa\u00E7\u00F5es do Aluno: ");
-		lblNewLabel.setBounds(10, 24, 272, 25);
+		lblNewLabel.setBounds(25, 25, 272, 25);
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 21));
 		add(lblNewLabel);
-		
-		JLabel lblInformaesDoSemestre = new JLabel("Informa\u00E7\u00F5es do Semestre Passado: ");
-		lblInformaesDoSemestre.setBounds(10, 75, 390, 25);
-		lblInformaesDoSemestre.setFont(new Font("Arial", Font.BOLD, 22));
-		add(lblInformaesDoSemestre);
-		
-		JLabel lblMatriasRecomendadas = new JLabel("Mat\u00E9rias Recomendadas: ");
-		lblMatriasRecomendadas.setBounds(10, 125, 287, 25);
-		lblMatriasRecomendadas.setFont(new Font("Arial", Font.BOLD, 22));
-		add(lblMatriasRecomendadas);
 		
 		JLabel lblNewLabel_1 = new JLabel("\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014");
 		lblNewLabel_1.setBounds(0, 161, 1319, 25);
@@ -120,20 +100,21 @@ public class ViewSelecao extends JPanel {
 		lblPosBarreira.setBounds(854, 197, 400, 70);
 		add(lblPosBarreira);
 		
-		String[] materiasCursadas = {"Calculo 1A / CMA211 / Disponvel / 1, Obrigatria", "Algoritmos e Estrutura de Dados 1 / CI100 / Disponvel / 1, Obrigatria", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1", "Algoritmos e Estrutura de Dados 1"};
-		String[] materiasPreBarreira = {"Calculo 1A / CMA211 / Disponvel / 1, Obrigatria", "Algoritmos e Estrutura de Dados 1 / CI100 / Disponvel / 1, Obrigatria"};
-		String[] materiasPosBarreira = {"Calculo 1A / CMA211 / Disponvel / 1, Obrigatria", "Algoritmos e Estrutura de Dados 1 / CI100 / Disponvel / 1, Obrigatria"};
+		ArrayList<String> materiasCursadas = controllerSelecao.carregaHistorico();
+		ArrayList<String> materiasPreBarreira = controllerSelecao.carregarPreBarreira();
+		ArrayList<String> materiasPosBarreira = controllerSelecao.carregarPosBarreira();
 		
 		JScrollPane scpCursadas = new JScrollPane();
 		scpCursadas.setDoubleBuffered(true);
 		scpCursadas.setBounds(10, 278, 400, 392);
 		add(scpCursadas);
 		
-		JList lstCursadas = new JList(materiasCursadas);
+		JList lstCursadas = new JList(materiasCursadas.toArray());
+		lstCursadas.setFixedCellHeight(35);
 		lstCursadas.setEnabled(false);
 		lstCursadas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scpCursadas.setViewportView(lstCursadas);
-		lstCursadas.setFont(new Font("Arial", Font.ITALIC, 18));
+		lstCursadas.setFont(new Font("Arial", Font.ITALIC, 16));
 		lstCursadas.setBorder(UIManager.getBorder("List.focusCellHighlightBorder"));
 		lstCursadas.setBackground(new Color(231, 245, 220));
 		
@@ -142,11 +123,12 @@ public class ViewSelecao extends JPanel {
 		scpPreBarreira.setBounds(432, 278, 390, 392);
 		add(scpPreBarreira);
 		
-		JList lstPreBarreira = new JList(materiasPreBarreira);
+		JList lstPreBarreira = new JList(materiasPreBarreira.toArray());
+		lstPreBarreira.setFixedCellHeight(35);
 		lstPreBarreira.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lstPreBarreira.setSelectionBackground(new Color(243, 215, 245));
 		scpPreBarreira.setViewportView(lstPreBarreira);
-		lstPreBarreira.setFont(new Font("Arial", Font.ITALIC, 18));
+		lstPreBarreira.setFont(new Font("Arial", Font.ITALIC, 16));
 		lstPreBarreira.setBorder(UIManager.getBorder("List.focusCellHighlightBorder"));
 		lstPreBarreira.setBackground(new Color(231, 245, 220));
 		
@@ -155,28 +137,42 @@ public class ViewSelecao extends JPanel {
 		scpPosBarreira.setBounds(854, 278, 400, 392);
 		add(scpPosBarreira);
 		
-		JList lstPosBarreira = new JList(materiasPosBarreira);
+		JList lstPosBarreira = new JList(materiasPosBarreira.toArray());
+		lstPosBarreira.setFixedCellHeight(35);
 		lstPosBarreira.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		scpPosBarreira.setViewportView(lstPosBarreira);
 		lstPosBarreira.setSelectionBackground(new Color(243, 215, 245));
-		lstPosBarreira.setFont(new Font("Arial", Font.ITALIC, 18));
+		lstPosBarreira.setFont(new Font("Arial", Font.ITALIC, 16));
 		lstPosBarreira.setBorder(UIManager.getBorder("List.focusCellHighlightBorder"));
 		lstPosBarreira.setBackground(new Color(231, 245, 220));
 		
-		JLabel lblNewLabel_2 = new JLabel("Podemos escrever aqui tamb\u00E9m");
-		lblNewLabel_2.setBounds(10, 53, 223, 14);
+		String informacoesAluno = controllerSelecao.pegarInformacoesAluno();
+		JLabel lblNewLabel_2 = new JLabel(informacoesAluno);
+		lblNewLabel_2.setFont(new Font("Arial", Font.BOLD, 18));
+		lblNewLabel_2.setBounds(25, 113, 728, 25);
 		add(lblNewLabel_2);
-		
-		JLabel lblNewLabel_2_1 = new JLabel("Podemos escrever aqui tamb\u00E9m");
-		lblNewLabel_2_1.setBounds(248, 32, 223, 14);
-		add(lblNewLabel_2_1);
 		
 		JLabel lblNewLabel_3 = new JLabel("Use o Ctrl ou o Shift para selecionar mais de um");
 		lblNewLabel_3.setFont(new Font("Arial", Font.BOLD, 14));
 		lblNewLabel_3.setBounds(449, 180, 356, 14);
 		add(lblNewLabel_3);
-
-		controllerSelecao.Exporta();
+		
+		JButton btnGerarcsv = new JButton("Gerar .csv e Solicitar");
+		btnGerarcsv.setBounds(1067, 8, 185, 65);
+		btnGerarcsv.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int[] preBarreiraSelected = lstPreBarreira.getSelectedIndices();
+				int[] posBarreiraSelected = lstPosBarreira.getSelectedIndices();
+				try {
+					controllerSelecao.geraCSV(preBarreiraSelected, posBarreiraSelected, materiasPreBarreira, materiasPosBarreira);
+					controllerMaster.navegaTelaSolicitacao();
+				} catch (Exception ex) { System.out.print(ex); }
+			}
+		});
+		btnGerarcsv.setFont(new Font("Arial", Font.BOLD, 15));
+		btnGerarcsv.setBorderPainted(false);
+		btnGerarcsv.setBackground(new Color(243, 215, 245));
+		add(btnGerarcsv);
 		
 		// DefaultListModel<String> model = new DefaultListModel<String>();
 		// carregaListaCursadas(model);
