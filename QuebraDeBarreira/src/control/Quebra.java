@@ -50,12 +50,14 @@ public class Quebra {
         return 0;
     }
 
-    public List<Disciplina> analisarPedido(PedidoQuebra pedido){
+    public List<List<Disciplina>> analisarPedido(PedidoQuebra pedido){
         HistoricoDAO historicoDAO = new HistoricoDAO();
         
         List<RegistroHistorico> disciplinasConcluidas = historicoDAO.recuperarDisciplinasAprovadas(); 
         List<Disciplina> disciplinasAprovadas = new ArrayList<Disciplina>();
+        List<Disciplina> disciplinasReprovadas = new ArrayList<Disciplina>();
         List<Disciplina> disciplinasSolicitadas = pedido.getDisciplinas();
+        List<List<Disciplina>> resultado = new ArrayList<List<Disciplina>>();
 
         // Ordena por período (Tem que priorizar as mais para o começo do curso)
         Collections.sort(disciplinasAprovadas, 
@@ -71,10 +73,11 @@ public class Quebra {
             if(disciplina.getPeriodoIdeal() < 9 && !disciplina.getCodigoDisciplina().equals("CI1215")){ 
               disciplinasAprovadas.add(disciplina);
             }
-
-            // Só aprova CI1215 se concluiu CI1212
-            if(disciplina.getCodigoDisciplina().equals("CI1215") && temDisciplina(disciplinasConcluidas, "CI1212")){
-                disciplinasAprovadas.add(disciplina);
+            else if(disciplina.getCodigoDisciplina().equals("CI1215") && temDisciplina(disciplinasConcluidas, "CI1212")){
+                disciplinasAprovadas.add(disciplina); //Só aprova ci1215 se concluiu ci1212
+            }
+            else{
+                disciplinasReprovadas.add(disciplina);
             }
 
             if(disciplinasAprovadas.size() == nDisciplinas){
@@ -82,7 +85,10 @@ public class Quebra {
             }
         }
 
-        return disciplinasAprovadas;
+        resultado.add(disciplinasAprovadas);
+        resultado.add(disciplinasReprovadas);
+
+        return resultado;
     }
 
     public boolean temDisciplina(List<RegistroHistorico> disciplinas, String codigo){
