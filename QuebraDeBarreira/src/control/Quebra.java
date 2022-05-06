@@ -84,7 +84,6 @@ public class Quebra {
                 break;
             }
         }
-
         resultado.add(disciplinasAprovadas);
         resultado.add(disciplinasReprovadas);
         return resultado;
