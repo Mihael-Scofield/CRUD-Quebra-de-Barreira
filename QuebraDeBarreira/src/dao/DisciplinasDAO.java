@@ -17,7 +17,7 @@ public class DisciplinasDAO {
         List<Disciplina> disciplinas = new ArrayList<Disciplina>();
 
         try{
-            BufferedReader br = new BufferedReader(new FileReader("dao/disciplinas.csv"));
+            BufferedReader br = new BufferedReader(new FileReader("src/dao/disciplinas.csv"));
             disciplinas.addAll(extrairDados(br));
         }
         catch(Exception e){

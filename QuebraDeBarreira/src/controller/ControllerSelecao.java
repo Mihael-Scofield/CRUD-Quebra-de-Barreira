@@ -66,7 +66,7 @@ public class ControllerSelecao {
     public void geraCSV(int[] preBarreiraSelected, int[] posBarreiraSelected, ArrayList<String> materiasPreBarreira, ArrayList<String> materiasPosBarreira ) {
 		
 		try {
-			FileWriter fileWriter = new FileWriter ("dao/solicitacao.csv");
+			FileWriter fileWriter = new FileWriter ("src/dao/solicitacao.csv");
 			PrintWriter printWriter = new PrintWriter (fileWriter);
 			
 			printWriter.println ("COD_CURSO,NUM_VERSAO,DESCR_ESTRUTURA,COD_DISCIPLINA,NOME_UNIDADE,NOME_DISCIPLINA,PERIODO_IDEAL,NUM_HORAS,TIPO_DISCIPLINA,CH_TOTAL,SITUACAO_VERSAO");

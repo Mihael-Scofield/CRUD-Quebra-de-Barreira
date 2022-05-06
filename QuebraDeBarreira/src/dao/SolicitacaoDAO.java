@@ -16,7 +16,7 @@ public class SolicitacaoDAO {
         List<Disciplina> disciplinas = new ArrayList<Disciplina>();
 
         try{
-            BufferedReader br = new BufferedReader(new FileReader("dao/solicitacao.csv"));
+            BufferedReader br = new BufferedReader(new FileReader("src/dao/solicitacao.csv"));
             disciplinas.addAll(extrairDados(br));
         }
         catch(Exception e){

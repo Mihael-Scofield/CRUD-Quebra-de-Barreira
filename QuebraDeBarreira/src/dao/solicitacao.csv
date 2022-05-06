@@ -2,3 +2,9 @@ COD_CURSO,NUM_VERSAO,DESCR_ESTRUTURA,COD_DISCIPLINA,NOME_UNIDADE,NOME_DISCIPLINA
 ,,,,,,,,,,
 21A,2019,Estágio Supervisionado Obrigatório,CI1100,Curso de Ciência da Computação - Bacharelado,ESTÁGIO OBRIGATÓRIO,9,220,Estágio Curricular,220,A
 21A,2019,Núcleo de Conteúdos obrigatórios,CE009,Curso de Ciência da Computação - Bacharelado,INTRODUÇÃO À ESTATÍSTICA,3,60,Obrigatória,60,A
+21A,2019,Núcleo de Conteúdos obrigatórios,CI1001,Curso de Ciência da Computação - Bacharelado,PROGRAMAÇÃO I,2,60,Obrigatória,60,A
+21A,2019,Núcleo de Conteúdos obrigatórios,CI1002,Curso de Ciência da Computação - Bacharelado,PROGRAMAÇÃO II,3,60,Obrigatória,60,A
+21A,2019,Núcleo de Conteúdos obrigatórios,CI1003,Curso de Ciência da Computação - Bacharelado,INTRODUÇÃO À CIÊNCIA DA COMPUTAÇÃO,1,30,Obrigatória,60,A
+21A,2019,Núcleo de Conteúdos obrigatórios,CI1005,Curso de Ciência da Computação - Bacharelado,QUALIDADE DE SOFTWARE,8,15,Obrigatória,60,A
+21A,2019,Núcleo de Conteúdos obrigatórios,CI1055,Curso de Ciência da Computação - Bacharelado,ALGORITMOS E ESTRUTURA DE DADOS I,1,40,Obrigatória,60,A
+21A,2019,Núcleo de Conteúdos obrigatórios,CI1056,Curso de Ciência da Computação - Bacharelado,ALGORITMOS E ESTRUTURA DE DADOS II,2,40,Obrigatória,60,A

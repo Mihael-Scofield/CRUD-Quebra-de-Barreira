@@ -15,14 +15,11 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
-import javax.swing.DefaultListModel;
 import javax.swing.UIManager;
-import java.awt.BorderLayout;
 import javax.swing.border.LineBorder;
 import javax.swing.SwingConstants;
 import java.awt.Cursor;
 import javax.swing.JList;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 

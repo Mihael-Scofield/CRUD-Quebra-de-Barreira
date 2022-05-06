@@ -65,15 +65,15 @@ public class Quebra {
 
         int nDisciplinas = calcularNumeroDisciplinas(pedido.getDisciplinas().size());
 
-        System.out.println("Numero disciplinas: " + nDisciplinas);
+        // System.out.println("Numero disciplinas: " + nDisciplinas);
 
-
+        Boolean adicionaMateriaAprovada = true;
         for(Disciplina disciplina: disciplinasSolicitadas){
             //Não é optatativa
-            if(disciplina.getPeriodoIdeal() < 9 && !disciplina.getCodigoDisciplina().equals("CI1215")){ 
+            if(disciplina.getPeriodoIdeal() < 9 && !disciplina.getCodigoDisciplina().equals("CI1215") && adicionaMateriaAprovada){ 
               disciplinasAprovadas.add(disciplina);
             }
-            else if(disciplina.getCodigoDisciplina().equals("CI1215") && temDisciplina(disciplinasConcluidas, "CI1212")){
+            else if(disciplina.getCodigoDisciplina().equals("CI1215") && temDisciplina(disciplinasConcluidas, "CI1212") && adicionaMateriaAprovada){
                 disciplinasAprovadas.add(disciplina); //Só aprova ci1215 se concluiu ci1212
             }
             else{
@@ -81,7 +81,7 @@ public class Quebra {
             }
 
             if(disciplinasAprovadas.size() == nDisciplinas){
-                break;
+                adicionaMateriaAprovada = false;
             }
         }
         resultado.add(disciplinasAprovadas);
